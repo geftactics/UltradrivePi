@@ -44,8 +44,7 @@ function setUltradrive(param) {
 
    channel = param[0];
    parameterNum = param[1];
-   valueHi = param[2]
-   valueLow = param[3];
+   value = param[2] + param[3];
 
    if(channel==0x00) { // Setup
       switch(parameterNum) {
@@ -116,7 +115,21 @@ function setUltradrive(param) {
       }
    }
 
+
+
    console.log(param);
+
+   test = param.readInt8(2) * 128 + param.readInt8(3)
+   console.log(test);
+
+
    console.log('---------------');
 
 }
+
+var containsFlag = function(number, flag) {
+  return (number & flag) === flag;
+};
+
+containsFlag(129, 128);  // true
+containsFlag(81, 128);   // false
