@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+	<title>DCX2496 Controller</title>
+	<meta name="viewport" content="width=400px" />
+	
+	<script src="socket.io/socket.io.js"></script>
+	<link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+	<input type="range" id="gain_1" min="0" max="300" value="50" step="1" oninput="showValue(this.value)" />
+	<span id="gain_text_1">50</span><br/><br/>
+	
+	<input type="range" id="gain_2" min="0" max="300" value="50" step="1" oninput="showValue(this.value)" />
+	<span id="gain_text_2">50</span><br/><br/>
+	
+	<input type="range" id="gain_3" min="0" max="300" value="50" step="1" oninput="showValue(this.value)" />
+	<span id="gain_text_2">50</span><br/><br/>
+	
+	<script type="text/javascript">
+		var socket = io.connect();
+		
+		socket.on('update', function (chan, param, data) {
+			document.getElementById("gain_1").value = data;
+			document.getElementById("gain_text_1").innerHTML = data;
+		});
+		
+		function showValue(newValue)
+		{
+			document.getElementById("gain_text_1").innerHTML=newValue;
+			socket.emit('update', 0x01, 0x02, newValue);
+		}
+	</script>
+  </body>
+</html>
