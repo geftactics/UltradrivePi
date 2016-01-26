@@ -55,8 +55,8 @@ var settings = 0;
 io.sockets.on('connection', function (socket) {
         socket.on('update', function (channel,param,value) {
                 settings = value;
-                setUltradrive(0x01, 0x02, settings);
-                io.sockets.emit('update', 0x01, 0x02, settings);   
+                setUltradrive(channel, param, settings);
+                io.sockets.emit('update', channel, param, settings);   
         });
        
         socket.emit('update', 0x01, 0x02, settings);
@@ -82,10 +82,6 @@ function getUltradrive(param) {
    parameterNum = param[1];
    value = param.readInt8(2) * 128 + param.readInt8(3)
 
-   // console.log(param);
-   // byte1 = Math.floor(value / 128);
-   // byte2 = value % 128;
-
    if(channel==0x00) { // Setup
       switch(parameterNum) {
          case 0x02: console.log('['+channel+'] input sum type = ' + value); break;
@@ -108,7 +104,7 @@ function getUltradrive(param) {
 
    if(channel>=0x01 && channel<=0x0A) { // Inputs & Outputs
       switch(parameterNum) {
-         case 0x02: console.log('['+channel+'] gain = ' + value); break;
+         case 0x02: console.log('['+channel+'] gain = ' + value); io.sockets.emit('update', channel, parameterNum, value); break;
          case 0x03: console.log('['+channel+'] mute = ' + value); break;
          case 0x04: console.log('['+channel+'] delay switch = ' + value); break;
          case 0x05: console.log('['+channel+'] delay = ' + value); break;

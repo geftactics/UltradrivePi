@@ -1,35 +1,39 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
   <head>
-	<title>DCX2496 Controller</title>
-	<meta name="viewport" content="width=400px" />
-	
-	<script src="socket.io/socket.io.js"></script>
-	<link rel="stylesheet" href="style.css">
+    <title>DCX2496 Controller</title>
+    <meta name="viewport" content="width=400px" />
+    <script src="socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
 
-	<input type="range" id="gain_1" min="0" max="300" value="50" step="1" oninput="showValue(this.value)" />
-	<span id="gain_text_1">50</span><br/><br/>
+	<input type="range" id="1-2" min="0" max="300" value="50" step="1" oninput="showValue(0x01, 0x02, this.value)" />
+	<span id="txt-1-2">50</span><br/><br/>
 	
-	<input type="range" id="gain_2" min="0" max="300" value="50" step="1" oninput="showValue(this.value)" />
-	<span id="gain_text_2">50</span><br/><br/>
+	<input type="range" id="2-2" min="0" max="300" value="50" step="1" oninput="showValue(0x02, 0x02, this.value)" />
+	<span id="txt-2-2">50</span><br/><br/>
 	
-	<input type="range" id="gain_3" min="0" max="300" value="50" step="1" oninput="showValue(this.value)" />
-	<span id="gain_text_2">50</span><br/><br/>
+	<input type="range" id="3-2" min="0" max="300" value="50" step="1" oninput="showValue(0x03, 0x02, this.value)" />
+	<span id="txt-3-2">50</span><br/><br/>
 	
 	<script type="text/javascript">
 		var socket = io.connect();
 		
-		socket.on('update', function (chan, param, data) {
-			document.getElementById("gain_1").value = data;
-			document.getElementById("gain_text_1").innerHTML = data;
+		socket.on('update', function (channel, param, data) {
+			document.getElementById(channel + "-" + param).value = data;
+			setLabel(channel, param, data);
 		});
 		
-		function showValue(newValue)
+		function showValue(channel, param, newValue)
 		{
-			document.getElementById("gain_text_1").innerHTML=newValue;
-			socket.emit('update', 0x01, 0x02, newValue);
+			socket.emit('update', channel, param, newValue);
+			setLabel(channel, param, newValue);
+		}
+
+		function setLabel(channel, param, newValue)
+		{
+			document.getElementById("txt-" + channel + "-" + param).innerHTML = newValue;
 		}
 	</script>
   </body>
