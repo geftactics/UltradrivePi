@@ -1,40 +1,149 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <title>DCX2496 Controller</title>
-    <meta name="viewport" content="width=400px" />
-    <script src="socket.io/socket.io.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UltradrivePi</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-theme.min.css">
   </head>
+
   <body>
 
-	<input type="range" id="1-2" min="0" max="300" value="50" step="1" oninput="showValue(0x01, 0x02, this.value)" />
-	<span id="txt-1-2">50</span><br/><br/>
-	
-	<input type="range" id="2-2" min="0" max="300" value="50" step="1" oninput="showValue(0x02, 0x02, this.value)" />
-	<span id="txt-2-2">50</span><br/><br/>
-	
-	<input type="range" id="3-2" min="0" max="300" value="50" step="1" oninput="showValue(0x03, 0x02, this.value)" />
-	<span id="txt-3-2">50</span><br/><br/>
-	
-	<script type="text/javascript">
-		var socket = io.connect();
-		
-		socket.on('update', function (channel, param, data) {
-			document.getElementById(channel + "-" + param).value = data;
-			setLabel(channel, param, data);
-		});
-		
-		function showValue(channel, param, newValue)
-		{
-			socket.emit('update', channel, param, newValue);
-			setLabel(channel, param, newValue);
-		}
+    <br/>
 
-		function setLabel(channel, param, newValue)
-		{
-			document.getElementById("txt-" + channel + "-" + param).innerHTML = newValue;
-		}
-	</script>
+    <div class="container">
+      <div class="row">
+
+        <div class="col-xs-1 col-sm-1 col-md-1"></div>
+
+        <div class="col-xs-1 col-sm-1 col-md-1 text-center nopadding">
+          <span class="label label-default">A</span><br/><br/>
+          <input type="range" id="1-2" oninput="showValue(0x01, 0x02, this.value)" min="0" max="300" step="1" style="-webkit-appearance: slider-vertical;"><br/>
+          <span id="txt-1-2" class="label label-info col-xs-12">?.? db</span><br/>
+          <span class="label label-default col-xs-12">Clip</span><br/>
+          <span class="label label-default col-xs-12">Limit</span><br/>
+          <button type="button" class="btn btn-default btn-xs">
+            <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span> Mute
+          </button>
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-1 text-center nopadding">
+          <span class="label label-default">B</span><br/><br/>
+          <input type="range" id="2-2" oninput="showValue(0x02, 0x02, this.value)" min="0" max="300" step="1" style="-webkit-appearance: slider-vertical;"><br/>
+          <span id="txt-2-2" class="label label-info col-xs-12">?.? db</span><br/>
+          <span class="label label-default col-xs-12">Clip</span><br/>
+          <span class="label label-default col-xs-12">Limit</span><br/>
+          <button type="button" class="btn btn-default btn-xs">
+            <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span> Mute
+          </button>
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-1 text-center nopadding">
+          <span class="label label-default">C</span><br/><br/>
+          <input type="range" id="3-2" oninput="showValue(0x03, 0x02, this.value)" min="0" max="300" step="1" style="-webkit-appearance: slider-vertical;"><br/>
+          <span id="txt-3-2" class="label label-info col-xs-12">?.? db</span><br/>
+          <span class="label label-default col-xs-12">Clip</span><br/>
+          <span class="label label-default col-xs-12">Limit</span><br/>
+          <button type="button" class="btn btn-default btn-xs">
+            <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span> Mute
+          </button>
+        </div>
+
+        <div class="col-xs-1 col-sm-1 col-md-1"></div>
+
+        <div class="col-xs-1 col-sm-1 col-md-1 text-center nopadding">
+          <span class="label label-default">1</span><br/><br/>
+          <input type="range" id="5-2" oninput="showValue(0x05, 0x02, this.value)" min="0" max="300" step="1" style="-webkit-appearance: slider-vertical;"><br/>
+          <span id="txt-5-2" class="label label-info col-xs-12">?.? db</span><br/>
+          <span class="label label-default col-xs-12">Clip</span><br/>
+          <span class="label label-default col-xs-12">Limit</span><br/>
+          <button type="button" class="btn btn-danger btn-xs">
+            <span class="glyphicon glyphicon-volume-off" aria-hidden="true"></span> Mute
+          </button>
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-1 text-center nopadding">
+          <span class="label label-default">2</span><br/><br/>
+          <input type="range" id="6-2" oninput="showValue(0x06, 0x02, this.value)" min="0" max="300" step="1" style="-webkit-appearance: slider-vertical;"><br/>
+          <span id="txt-6-2" class="label label-info col-xs-12">?.? db</span><br/>
+          <span class="label label-danger col-xs-12">Clip</span><br/>
+          <span class="label label-warning col-xs-12">Limit</span><br/>
+          <button type="button" class="btn btn-default btn-xs">
+            <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span> Mute
+          </button>
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-1 text-center nopadding">
+          <span class="label label-default">3</span><br/><br/>
+          <input type="range" id="7-2" oninput="showValue(0x07, 0x02, this.value)" min="0" max="300" step="1" style="-webkit-appearance: slider-vertical;"><br/>
+          <span id="txt-7-2" class="label label-info col-xs-12">?.? db</span><br/>
+          <span class="label label-default col-xs-12">Clip</span><br/>
+          <span class="label label-warning col-xs-12">Limit</span><br/>
+          <button type="button" class="btn btn-default btn-xs">
+            <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span> Mute
+          </button>
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-1 text-center nopadding">
+          <span class="label label-default">4</span><br/><br/>
+          <input type="range" id="8-2" oninput="showValue(0x08, 0x02, this.value)" min="0" max="300" step="1" style="-webkit-appearance: slider-vertical;"><br/>
+          <span id="txt-8-2" class="label label-info col-xs-12">?.? db</span><br/>
+          <span class="label label-danger col-xs-12">Clip</span><br/>
+          <span class="label label-default col-xs-12">Limit</span><br/>
+          <button type="button" class="btn btn-default btn-xs">
+            <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span> Mute
+          </button>
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-1 text-center nopadding">
+          <span class="label label-default">5</span><br/><br/>
+          <input type="range" id="9-2" oninput="showValue(0x09, 0x02, this.value)" min="0" max="300" step="1" style="-webkit-appearance: slider-vertical;"><br/>
+          <span id="txt-9-2" class="label label-info col-xs-12">?.? db</span><br/>
+          <span class="label label-default col-xs-12">Clip</span><br/>
+          <span class="label label-default col-xs-12">Limit</span><br/>
+          <button type="button" class="btn btn-default btn-xs">
+            <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span> Mute
+          </button>
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-1 text-center nopadding">
+          <span class="label label-default">6</span><br/><br/>
+          <input type="range" id="10-2" oninput="showValue(0x0A, 0x02, this.value)" min="0" max="300" step="1" style="-webkit-appearance: slider-vertical;"><br/>
+          <span id="txt-10-2" class="label label-info col-xs-12">?.? db</span><br/>
+          <span class="label label-danger col-xs-12">Clip</span><br/>
+          <span class="label label-warning col-xs-12">Limit</span><br/>
+          <button type="button" class="btn btn-default btn-xs">
+            <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span> Mute
+          </button>
+        </div>
+
+        <div class="col-xs-1 col-sm-1 col-md-1"></div>
+
+      </div>
+    </div>
+
+
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+                var socket = io.connect();
+
+                socket.on('update', function (channel, param, data) {
+                        document.getElementById(channel + "-" + param).value = data;
+                        setLabel(channel, param, data);
+                });
+
+                function showValue(channel, param, newValue)
+                {
+                        socket.emit('update', channel, param, newValue);
+                        setLabel(channel, param, newValue);
+                }
+
+                function setLabel(channel, param, newValue)
+                {
+                        if(param==0x02) { newValue = (Math.round(newValue-150)/10).toFixed(1) + " db"; }
+                        document.getElementById("txt-" + channel + "-" + param).innerHTML = newValue;
+                }
+    </script>
+
   </body>
 </html>
+
