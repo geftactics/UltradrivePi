@@ -139,7 +139,7 @@
 
                 function setLabel(channel, param, newValue)
                 {
-                        if(param==0x02) { newValue = (Math.round(newValue-150)/10).toFixed(1) + " db"; }
+                        if(param==0x02 && channel!=0x00) { newValue = (Math.round(newValue-150)/10).toFixed(1) + " db"; }
                         document.getElementById("txt-" + channel + "-" + param).innerHTML = newValue;
                 }
     </script>

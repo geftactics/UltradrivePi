@@ -64,12 +64,12 @@ io.sockets.on('connection', function (socket) {
                 io.sockets.emit('update', channel, param, value);   
         });
        
-        // socket.emit('update', 0x01, 0x02, value);
+        // Send our 'in-memory' settings to newly connecting clients
+
         for (var c = 0; c < settings.length; c++) {
            for (var p = 0; p < settings[c].length; p++) {
               if (settings[c][p]) {
                  socket.emit('update', c, p, settings[c][p]);
-                 console.log('update,' + c + "," + p + "="+ settings[c][p]);
               }
            }
         }        
@@ -92,7 +92,6 @@ function setUI(channel,param,value) {
    settings[channel][param] = value;
    io.sockets.emit('update', channel, parameterNum, value)
 }
-
 
 
 
