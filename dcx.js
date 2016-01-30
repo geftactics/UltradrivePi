@@ -124,7 +124,7 @@ function getUltradrive(param) {
    if(channel>=0x01 && channel<=0x0A) { // Inputs & Outputs
       switch(parameterNum) {
          case 0x02: console.log('['+channel+'] gain = ' + value); setUI(channel, parameterNum, value); break;
-         case 0x03: console.log('['+channel+'] mute = ' + value); break;
+         case 0x03: console.log('['+channel+'] mute = ' + value); setUI(channel, parameterNum, value); break;
          case 0x04: console.log('['+channel+'] delay switch = ' + value); break;
          case 0x05: console.log('['+channel+'] delay = ' + value); break;
          case 0x06: console.log('['+channel+'] eq switch = ' + value); break;

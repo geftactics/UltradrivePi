@@ -26,8 +26,8 @@
           <span id="txt-1-2" class="label label-info col-xs-12">?.? db</span><br/>
           <span class="label label-default col-xs-12">Clip</span><br/>
           <span class="label label-default col-xs-12">Limit</span><br/>
-          <button type="button" class="btn btn-default btn-xs">
-            <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span> Mute
+          <button id="1-3" type="button" class="btn btn-default btn-xs" onclick="toggleValue(0x01,0x03)">
+            <span id="txt-1-3" class="glyphicon glyphicon-volume-up" aria-hidden="true"></span> Mute
           </button>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 text-center nopadding">
@@ -36,8 +36,8 @@
           <span id="txt-2-2" class="label label-info col-xs-12">?.? db</span><br/>
           <span class="label label-default col-xs-12">Clip</span><br/>
           <span class="label label-default col-xs-12">Limit</span><br/>
-          <button type="button" class="btn btn-default btn-xs">
-            <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span> Mute
+          <button id="2-3" type="button" class="btn btn-default btn-xs" onclick="toggleValue(0x02,0x03)">
+            <span id="txt-2-3" class="glyphicon glyphicon-volume-up" aria-hidden="true"></span> Mute
           </button>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 text-center nopadding">
@@ -46,8 +46,8 @@
           <span id="txt-3-2" class="label label-info col-xs-12">?.? db</span><br/>
           <span class="label label-default col-xs-12">Clip</span><br/>
           <span class="label label-default col-xs-12">Limit</span><br/>
-          <button type="button" class="btn btn-default btn-xs">
-            <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span> Mute
+          <button id="3-3" type="button" class="btn btn-default btn-xs" onclick="toggleValue(0x03,0x03)">
+            <span id="txt-3-3" class="glyphicon glyphicon-volume-off" aria-hidden="true"></span> Mute
           </button>
         </div>
 
@@ -59,18 +59,18 @@
           <span id="txt-5-2" class="label label-info col-xs-12">?.? db</span><br/>
           <span class="label label-default col-xs-12">Clip</span><br/>
           <span class="label label-default col-xs-12">Limit</span><br/>
-          <button type="button" class="btn btn-danger btn-xs">
-            <span class="glyphicon glyphicon-volume-off" aria-hidden="true"></span> Mute
+          <button id="5-3" type="button" class="btn btn-default btn-xs" onclick="toggleValue(0x05,0x03)">
+            <span id="txt-5-3" class="glyphicon glyphicon-volume-off" aria-hidden="true"></span> Mute
           </button>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 text-center nopadding">
           <span class="label label-default">2</span><br/><br/>
           <input type="range" id="6-2" oninput="showValue(0x06, 0x02, this.value)" min="0" max="300" step="1" style="-webkit-appearance: slider-vertical;"><br/>
           <span id="txt-6-2" class="label label-info col-xs-12">?.? db</span><br/>
-          <span class="label label-danger col-xs-12">Clip</span><br/>
-          <span class="label label-warning col-xs-12">Limit</span><br/>
-          <button type="button" class="btn btn-default btn-xs">
-            <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span> Mute
+          <span class="label label-default col-xs-12">Clip</span><br/>
+          <span class="label label-default col-xs-12">Limit</span><br/>
+          <button id="6-3" type="button" class="btn btn-default btn-xs" onclick="toggleValue(0x06,0x03)">
+            <span id="txt-6-3" class="glyphicon glyphicon-volume-off" aria-hidden="true"></span> Mute
           </button>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 text-center nopadding">
@@ -78,19 +78,19 @@
           <input type="range" id="7-2" oninput="showValue(0x07, 0x02, this.value)" min="0" max="300" step="1" style="-webkit-appearance: slider-vertical;"><br/>
           <span id="txt-7-2" class="label label-info col-xs-12">?.? db</span><br/>
           <span class="label label-default col-xs-12">Clip</span><br/>
-          <span class="label label-warning col-xs-12">Limit</span><br/>
-          <button type="button" class="btn btn-default btn-xs">
-            <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span> Mute
+          <span class="label label-default col-xs-12">Limit</span><br/>
+          <button id="7-3" type="button" class="btn btn-default btn-xs" onclick="toggleValue(0x07,0x03)">
+            <span id="txt-7-3" class="glyphicon glyphicon-volume-off" aria-hidden="true"></span> Mute
           </button>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 text-center nopadding">
           <span class="label label-default">4</span><br/><br/>
           <input type="range" id="8-2" oninput="showValue(0x08, 0x02, this.value)" min="0" max="300" step="1" style="-webkit-appearance: slider-vertical;"><br/>
           <span id="txt-8-2" class="label label-info col-xs-12">?.? db</span><br/>
-          <span class="label label-danger col-xs-12">Clip</span><br/>
+          <span class="label label-default col-xs-12">Clip</span><br/>
           <span class="label label-default col-xs-12">Limit</span><br/>
-          <button type="button" class="btn btn-default btn-xs">
-            <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span> Mute
+          <button id="8-3" type="button" class="btn btn-default btn-xs" onclick="toggleValue(0x08,0x03)">
+            <span id="txt-8-3" class="glyphicon glyphicon-volume-off" aria-hidden="true"></span> Mute
           </button>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 text-center nopadding">
@@ -99,18 +99,18 @@
           <span id="txt-9-2" class="label label-info col-xs-12">?.? db</span><br/>
           <span class="label label-default col-xs-12">Clip</span><br/>
           <span class="label label-default col-xs-12">Limit</span><br/>
-          <button type="button" class="btn btn-default btn-xs">
-            <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span> Mute
+          <button id="9-3" type="button" class="btn btn-default btn-xs" onclick="toggleValue(0x09,0x03)">
+            <span id="txt-9-3" class="glyphicon glyphicon-volume-off" aria-hidden="true"></span> Mute
           </button>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 text-center nopadding">
           <span class="label label-default">6</span><br/><br/>
           <input type="range" id="10-2" oninput="showValue(0x0A, 0x02, this.value)" min="0" max="300" step="1" style="-webkit-appearance: slider-vertical;"><br/>
           <span id="txt-10-2" class="label label-info col-xs-12">?.? db</span><br/>
-          <span class="label label-danger col-xs-12">Clip</span><br/>
-          <span class="label label-warning col-xs-12">Limit</span><br/>
-          <button type="button" class="btn btn-default btn-xs">
-            <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span> Mute
+          <span class="label label-default col-xs-12">Clip</span><br/>
+          <span class="label label-default col-xs-12">Limit</span><br/>
+          <button id="10-3" type="button" class="btn btn-default btn-xs" onclick="toggleValue(0x0A,0x03)">
+            <span id="txt-10-3" class="glyphicon glyphicon-volume-off" aria-hidden="true"></span> Mute
           </button>
         </div>
 
@@ -127,20 +127,47 @@
                 var socket = io.connect();
 
                 socket.on('update', function (channel, param, data) {
-                        document.getElementById(channel + "-" + param).value = data;
-                        setLabel(channel, param, data);
+                   if(param==0x03 && channel!=0x00 && data==0x01)
+                   {
+                      $("#"+channel+"-"+param).removeClass("btn-default").addClass("btn-danger");
+                      $("#txt-"+channel+"-"+param).removeClass("glyphicon-volume-up").addClass("glyphicon-volume-off")
+                   }
+                   if(param==0x03 && channel!=0x00 && data==0x00)
+                   {
+                      $("#"+channel+"-"+param).removeClass("btn-danger").addClass("btn-default");
+                      $("#txt-"+channel+"-"+param).removeClass("glyphicon-volume-off").addClass("glyphicon-volume-up");
+                   }
+                   document.getElementById(channel + "-" + param).value = data;
+                   setLabel(channel, param, data);
                 });
 
                 function showValue(channel, param, newValue)
                 {
-                        socket.emit('update', channel, param, newValue);
-                        setLabel(channel, param, newValue);
+                   socket.emit('update', channel, param, newValue);
+                   setLabel(channel, param, newValue);
                 }
 
                 function setLabel(channel, param, newValue)
                 {
-                        if(param==0x02 && channel!=0x00) { newValue = (Math.round(newValue-150)/10).toFixed(1) + " db"; }
-                        document.getElementById("txt-" + channel + "-" + param).innerHTML = newValue;
+                   if(param==0x02 && channel!=0x00) { newValue = (Math.round(newValue-150)/10).toFixed(1) + " db"; }
+                   if(param==0x03 && channel!=0x00) { return; }
+                   document.getElementById("txt-" + channel + "-" + param).innerHTML = newValue;
+                }
+
+                function toggleValue(channel, param)
+                {
+                   if($("#"+channel+"-"+param).hasClass("btn-default"))
+                   {
+                      socket.emit('update', channel, param, 0x01);
+                      $("#"+channel+"-"+param).removeClass("btn-default").addClass("btn-danger");
+                      $("#txt-"+channel+"-"+param).removeClass("glyphicon-volume-up").addClass("glyphicon-volume-off");
+                   }
+                   else
+                   {
+                      socket.emit('update', channel, param, 0x00);
+                      $("#"+channel+"-"+param).removeClass("btn-danger").addClass("btn-default");
+                      $("#txt-"+channel+"-"+param).removeClass("glyphicon-volume-off").addClass("glyphicon-volume-up");
+                   }
                 }
     </script>
 
